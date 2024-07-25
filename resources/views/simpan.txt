@@ -1,0 +1,9 @@
+route::get('/store', function(){
+    return view('store');
+})->name('backstore');
+
+action="{{ route('obats.update', $obat->id) }}" method="PATCH" enctype="multipart/form-data"
+
+value="{{ old('obat', $obats->obat) }}
+
+</button><button type="submit">
