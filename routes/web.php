@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,7 @@ use App\Views\Auth;
 use APp\Views\Passwords;
 use App\Models\Obat;
 use App\Models\User;
+use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/obat', function () {
     return view('indexobat');
@@ -58,8 +60,11 @@ Route::get('/register', function(){
     return view('register');
 })->name('obat.register');
 
+Route::post('/login', [HomeController::class,'authenticate']);
 
-Route::get('/login', [HomeController::class,'login'])->name('obat.login');
+Route::get('/login', function(){
+    return view('login');
+})->name('obat.login');
 
 // Route::get('/verify', [ObatController::class,'verify']);
 

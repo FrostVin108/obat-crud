@@ -7,9 +7,10 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Auth;
 
 class HomeController extends Controller
-{
+{   
     /**
      * Create a new controller instance.
      *
@@ -52,6 +53,26 @@ class HomeController extends Controller
     public function login()
     {  
         return view('login');
+    }
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if(User::attempt($credentials))
+        {
+            $request->session()->regenerate();
+            return redirect()->route('/store')
+                ->withSuccess('You have successfully logged in!');
+        }
+
+        return back()->withErrors([
+            'email' => 'Your provided credentials do not match in our records.',
+        ])->onlyInput('email');
+
     }
 
 }
