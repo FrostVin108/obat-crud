@@ -43,3 +43,7 @@ Route::put('/update/{id}', [ObatController::class, 'update'])->name('obat.update
 route::get('/tes1', [ObatController::class, 'tes']);
 
 Route::get('search', [ObatController::class,'search'])->name('search');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
