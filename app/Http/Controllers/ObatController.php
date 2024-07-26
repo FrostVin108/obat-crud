@@ -3,12 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Obat;
-
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ObatController extends Controller
 {
+    // public function register(Request $request){
+    //     $this->validate($request, [
+    //         'name'       => 'required',
+    //         'email'     => 'required',
+    //         'password'   => 'required|min:6',
+            
+    //     ]);
+
+    //         User::register([
+    //         'name'       => $request->name,
+    //         'email'     => $request->email,
+    //         'passowrd'        => $request->password,
+            
+    //     ]);
+    //     return redirect()->route('obat.store');
+    // }
+
     public function create(Request $request){
         $this->validate($request, [
             'item_code'       => 'required|min:14',
@@ -28,13 +45,13 @@ class ObatController extends Controller
         return redirect()->route('obat.store');
     }
 
-    // public function tes()
-    // {
-    //     $obat = Obat::first();
-    //     // bersifat array
+    public function tes()
+    {
+        $obat = Obat::first();
+        // bersifat array
        
-    //     return view('tes1', compact('obat'));
-    // }
+        return view('tes1', compact('obat'));
+    }
     
     public function destroy($id){
         $obat = Obat::findOrFail($id);
@@ -46,11 +63,11 @@ class ObatController extends Controller
     public function edit(Request $request, $id){
         
         // get post by ID
-        $obat = obat::findOrFail($id);
+        // $obat = obat::findOrFail($id);
         // dd ($obat);
     
         //render view with post
-        return view('edit', compact('obat'), );
+        return view('edit' );
         }
 
             /**
@@ -97,6 +114,35 @@ class ObatController extends Controller
  
 	}
 
+ 
+
+
+    
+    public function login()
+    {  
+        return view('auth.login');
+    }
+    // public function register()
+    // {  
+    //     return view('auth.register');
+    // }
+    public function verify()
+    {  
+        return view('auth.verify');
+    }
+
+    public function confirm()
+    {  
+        return view('auth.passwords.confirm');
+    }
+    public function email()
+    {  
+        return view('auth.passwords.email');
+    }
+    public function reset()
+    {  
+        return view('auth.passwords.reset');
+    }
+
         
 }
-

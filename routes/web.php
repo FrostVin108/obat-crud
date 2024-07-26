@@ -12,9 +12,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ObatController;
-
+use App\Views\Auth;
+use APp\Views\Passwords;
 use App\Models\Obat;
+use App\Models\User;
 
 Route::get('/obat', function () {
     return view('indexobat');
@@ -40,10 +43,29 @@ Route::get('/edit/{id}', [ObatController::class, 'edit'])->name('obat.edit');
 
 Route::put('/update/{id}', [ObatController::class, 'update'])->name('obat.update');
 
-route::get('/tes1', [ObatController::class, 'tes']);
-
 Route::get('search', [ObatController::class,'search'])->name('search');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// \Illuminate\Support\Facades\Auth::routes();
+
+route::post('/register', [HomeController::class, 'register']);
+
+// Route::get('/create', function () {
+//     return view('create');
+// });
+
+Route::get('/register', function(){
+    return view('register');
+})->name('obat.register');
+
+
+Route::get('/login', [HomeController::class,'login'])->name('obat.login');
+
+// Route::get('/verify', [ObatController::class,'verify']);
+
+// Route::get('/confirm', [ObatController::class,'confirm']);
+
+// Route::get('/email', [ObatController::class,'email']);
+
+// Route::get('/reset', [ObatController::class,'reset']);
+
