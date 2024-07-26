@@ -84,17 +84,19 @@ class ObatController extends Controller
     
         //validate form
         $this->validate($request, [
-            'obat'     => 'required',
-            'kode'     => 'required',
-            'stock'    => 'required|min:1',
+            'deskription'     => 'required',
+            'uom'             => 'required',
+            'item_code'       => 'required|min:14',
+            'stock_on_hand'   => 'required|min:1',
         ]);
 
         //get post by ID
         $post = Obat::findOrFail($id);
         $post->update([
-            'obat'  => $request->obat,
-            'kode'  => $request->kode,
-            'stock' => $request->stock,
+            'deskription'     => $request->deskription,
+            'uom'             => $request->uom,
+            'item_code'       => $request->item_code,
+            'stock_on_hand'   => $request->stock_on_hand,
         ]);
         return redirect()->route('');
     }
