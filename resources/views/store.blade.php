@@ -10,9 +10,10 @@
     <div class="card-body">
         <p style="font-size: 20px">pilih sesuai keperluan</p>
 
-        <form action="search" method="GET">
+        <form action="{{route('search') }}" method="GET">
             <input type="text" name="search" placeholder="Cari Kode Item" value="{{ old('search') }}">
-            <input type="submit" value="SEARCH">
+            <input type="submit" value="Search">
+            
         </form>
                 
                 <a href="create"><button type="button" class="btn btn-success" style="font-size:15px">Masukin Obat</button></a>
