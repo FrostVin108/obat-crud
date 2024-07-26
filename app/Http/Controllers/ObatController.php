@@ -45,8 +45,6 @@ class ObatController extends Controller
 
     public function edit(Request $request, $id){
         
-
-
         // get post by ID
         $obat = obat::findOrFail($id);
         // dd ($obat);

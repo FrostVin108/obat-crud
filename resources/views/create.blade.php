@@ -49,7 +49,7 @@
         <hr>
 
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a href="/store" class="btn btn-warning">Return</a>
+        <a href="/" class="btn btn-warning">Return</a>
 </div>
 
 
