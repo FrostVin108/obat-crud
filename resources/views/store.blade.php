@@ -2,7 +2,7 @@
 
 @section('content_header')
     <h1>List Obat</h1>
-    <a href="/obat">balik</a>
+    {{-- <a href="/obat">balik</a> --}}
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
         <p style="font-size: 20px">pilih sesuai keperluan</p>
                 
                 <a href="create"><button type="button" class="btn btn-success" style="font-size:15px">Masukin Obat</button></a>
-                <a href="store"><button type="button" class="btn btn-secondary" style="font-size:15px">Check Obat</button></a>
+                {{-- <a href="store"><button type="button" class="btn btn-secondary" style="font-size:15px">Check Obat</button></a> --}}
             <hr>
     </div>
 </div>

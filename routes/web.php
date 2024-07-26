@@ -36,14 +36,6 @@ Route::delete('destroy/{id}', [ ObatController::class, 'destroy']
 Route::post('store', [ ObatController::class, 'create']
 )->name('obat.create');
 
-
-// Route::get('edit/{id}' [ObatController::class; 'edit'] function(){
-//     return redirect('edit');
-// })->name('obat.edit');
-
-// Route::post('edit/{id}'); [ ObatController::class,'update'];
-// return redirect('edit');
-
 Route::get('/edit/{id}', [ObatController::class, 'edit'])->name('obat.edit');
 
 Route::put('/update/{id}', [ObatController::class, 'update'])->name('obat.update');
