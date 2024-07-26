@@ -11,7 +11,7 @@ class ObatController extends Controller
 {
     public function create(Request $request){
         $this->validate($request, [
-            'item_code'       => 'required',
+            'item_code'       => 'required|min:14',
             'deskription'     => 'required',
             'uom'             => 'required',
             'stock_on_hand'   => 'required|min:1',
@@ -42,23 +42,6 @@ class ObatController extends Controller
         return redirect()->route('obat.store');
     }
 
-
-
-    public function view($id, Request $request){
-        $this->validate($request, [
-            'obat'     => 'required',
-            'kode'     => 'required',
-            'stock'    => 'required|min:1',
-        ]);
-
-        $obats = Obat::findOrFail($id);
-        $obats->delete();
-        $obats->post([
-            'obat'     => $request->obat,
-            'kode'     => $request->kode,
-            'stock'    => $request->stock,
-        ]);        
-    }
 
     public function edit(Request $request, $id){
         
@@ -98,7 +81,7 @@ class ObatController extends Controller
             'item_code'       => $request->item_code,
             'stock_on_hand'   => $request->stock_on_hand,
         ]);
-        return redirect()->route('');
+        return redirect()->route('obat.store');
     }
         
         
