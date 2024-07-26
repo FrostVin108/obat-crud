@@ -41,3 +41,5 @@ Route::get('/edit/{id}', [ObatController::class, 'edit'])->name('obat.edit');
 Route::put('/update/{id}', [ObatController::class, 'update'])->name('obat.update');
 
 route::get('/tes1', [ObatController::class, 'tes']);
+
+Route::get('search', [ObatController::class,'search'])->name('search');

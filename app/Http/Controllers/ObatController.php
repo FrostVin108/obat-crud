@@ -81,7 +81,22 @@ class ObatController extends Controller
         ]);
         return redirect()->route('obat.store');
     }
-        
+
+    public function search(Request $request)
+	{
+		// menangkap data pencarian
+		$search = $request->search;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+		$item_code = Obat::find('item_code')
+		->where('item_code','like',"%".$search."%")
+		->paginate();
+ 
+    		// mengirim data pegawai ke view index
+		return view('obat.store',['item_code' => $item_code]);
+ 
+	}
+
         
 }
 

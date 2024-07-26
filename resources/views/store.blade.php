@@ -9,6 +9,11 @@
 <div class="card">
     <div class="card-body">
         <p style="font-size: 20px">pilih sesuai keperluan</p>
+
+        <form action="search" method="GET">
+            <input type="text" name="search" placeholder="Cari Kode Item" value="{{ old('search') }}">
+            <input type="submit" value="SEARCH">
+        </form>
                 
                 <a href="create"><button type="button" class="btn btn-success" style="font-size:15px">Masukin Obat</button></a>
                 {{-- <a href="store"><button type="button" class="btn btn-secondary" style="font-size:15px">Check Obat</button></a> --}}
