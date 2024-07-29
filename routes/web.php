@@ -45,6 +45,8 @@ Route::get('/edit/{id}', [ObatController::class, 'edit'])->name('obat.edit');
 
 Route::put('/update/{id}', [ObatController::class, 'update'])->name('obat.update');
 
+Route::put('/update/{id}', [ObatController::class, 'updatestock'])->name('updatestock');
+
 Route::get('search', [ObatController::class,'search'])->name('search');
 
 // \Illuminate\Support\Facades\Auth::routes();

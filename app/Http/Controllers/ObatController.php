@@ -71,7 +71,7 @@ class ObatController extends Controller
             'deskription'     => 'required',
             'uom'             => 'required',
             'item_code'       => 'required|min:14',
-            'stock_on_hand'   => 'required|min:1',
+            'stock_on_hand'   => 'required|numeric|min:1',
         ]);
 
         //get post by ID
@@ -85,6 +85,30 @@ class ObatController extends Controller
         return redirect()->route('obat.store');
     }
 
+                /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return RedirectResponse
+     */
+
+    public function updatestock(Request $request, $id):RedirectResponse{
+    
+        //validate form
+        $this->validate($request, [
+            'stock_on_hand'   => 'required|numeric|min:1',
+        ]);
+
+        //get post by ID
+        $post = Obat::findOrFail($id);
+        $post->update([
+            'stock_on_hand'   => $request->stock_on_hand,
+        ]);
+        return redirect()->route('obat.store');
+    }
+
+
     public function search(Request $request)
 	{
 		// menangkap data pencarian
@@ -94,6 +118,7 @@ class ObatController extends Controller
 		$obat = Obat::
 		where('item_code',$search)
         ->get();
+
         $obat = Obat::
 		where('uom',$search)
         ->get();
