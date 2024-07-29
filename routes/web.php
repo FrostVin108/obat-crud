@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\ObloginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ObatController;
 use App\Views\Auth;
 use APp\Views\Passwords;
 use App\Models\Obat;
 use App\Models\User;
-use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/obat', function () {
     return view('indexobat');
@@ -47,20 +47,15 @@ Route::put('/update/{id}', [ObatController::class, 'update'])->name('obat.update
 
 Route::get('search', [ObatController::class,'search'])->name('search');
 
-
 // \Illuminate\Support\Facades\Auth::routes();
 
 route::post('/register', [HomeController::class, 'register']);
-
-// Route::get('/create', function () {
-//     return view('create');
-// });
 
 Route::get('/register', function(){
     return view('register');
 })->name('obat.register');
 
-Route::post('/login', [HomeController::class,'authenticate']);
+Route::post('/login', [HomeController::class,'authenticate'])->name('obat.login');
 
 Route::get('/login', function(){
     return view('login');

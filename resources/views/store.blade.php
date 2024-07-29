@@ -11,12 +11,12 @@
         <p style="font-size: 20px">pilih sesuai keperluan</p>
 
         <form action="{{route('search') }}" method="GET">
-            <input type="text" name="search" placeholder="Cari Kode Item" value="{{ old('search') }}">
-            <input type="submit" value="Search">
-            
+            <input type="text"  style="font-size: 18px"name="search" placeholder="Cari Kode Item" value="{{ old('search') }}">
+            <input type="submit" style="border-radius: 0px" style="font-size: 14px" type="button" class="btn btn-info" value="Search">
+            <a href="/"><button  type="button" style="border-radius: 0px" style="font-size: 14px" class="btn btn-info">balik</button></a>
         </form>
                 
-                <a href="create"><button type="button" class="btn btn-success" style="font-size:15px">Masukin Obat</button></a>
+                <a href="create"><button type="button" class="btn btn-success" style="font-size:18px">Masukin Obat</button></a>
                 {{-- <a href="store"><button type="button" class="btn btn-secondary" style="font-size:15px">Check Obat</button></a> --}}
             <hr>
     </div>

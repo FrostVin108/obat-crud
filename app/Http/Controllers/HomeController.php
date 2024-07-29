@@ -50,29 +50,69 @@ class HomeController extends Controller
         return redirect()->route('obat.login');
     }
 
-    public function login()
-    {  
-        return view('login');
+    public function login(Request $request)
+    {
+        $this->validate($request, ['password']);
+        $user = $request->user();
+        if ($user->password != $request->password) {
+            return redirect()->back()->with("error","invalid email or password");
+        }
+        
+        
     }
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        if(User::attempt($credentials))
-        {
-            $request->session()->regenerate();
-            return redirect()->route('/store')
-                ->withSuccess('You have successfully logged in!');
-        }
-
-        return back()->withErrors([
-            'email' => 'Your provided credentials do not match in our records.',
-        ])->onlyInput('email');
-
+        $credentials = $request->validate([ 
+            'email' => 'required|email', 
+            'password' => 'required', 
+        ]); 
+        if (User::attempt($credentials)) { 
+            $request->session()->regenerate(); 
+            return redirect()->intended('/'); 
+        } 
+        return back()->withErrors([ 
+            'email' => 'Email and password combination does not match.', 
+        ]); 
     }
+
+    // public function authenticate(Request $request) 
+    // { 
+    //     $credentials = $request->validate([ 
+    //         'email' => 'required|email', 
+    //         'password' => 'required', 
+    //     ]); 
+    //     if (User::attempt($credentials)) { 
+    //         $request->session()->regenerate(); 
+    //         return redirect()->intended('/'); 
+    //     } 
+    //     return back()->withErrors([ 
+    //         'email' => 'Email and password combination does not match.', 
+    //     ]); 
+    // } 
+
+    // public function authenticate(Request $request)
+    // {
+    //     $request->validate([
+    //         'email' => 'required',
+    //         'password' => 'required',
+    //     ]);
+        
+    //     $data = User::all();
+    //     if(Hash::check($data['password'], $request->password)){
+    //         return redirect()->route('obat.');
+            
+    //     }
+        
+        // $credentials = $request->only('email', 'password');
+        //     if ($request) {
+        //         $data  = 
+        //         User::where('email' = $request->email);
+        //         User::where('password' = $request->password);
+
+        //     }
+  
+    //     return redirect("obat.login")->withSuccess('Login details are not valid');
+    // }
 
 }

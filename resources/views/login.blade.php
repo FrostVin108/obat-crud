@@ -5,11 +5,46 @@
 @stop
 
 @section('content')
+
+@if ($errors->any())
+
+<div>
+
+    <ul>
+
+        @foreach ($errors->all() as $error)
+
+            <li>{{ $error }}</li>
+
+        @endforeach
+
+    </ul>
+
+</div>
+
+@endif @if ($errors->any())
+
+<div>
+
+    <ul>
+
+        @foreach ($errors->all() as $error)
+
+            <li>{{ $error }}</li>
+
+        @endforeach
+
+    </ul>
+
+</div>
+
+@endif
+
             <div class="card offset-md-2 col-md-8" >
                 
 
                 <div class="card-body ">
-                    <form method="POST" action="{{ route('obat.register') }}" class="gap-form m4">
+                    <form method="POST" action="{{ route('obat.login') }}" class="gap-form m4">
                         @csrf
                     
                         <div class=" offset-md-1">

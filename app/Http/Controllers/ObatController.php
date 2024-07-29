@@ -9,22 +9,7 @@ use Illuminate\Http\Request;
 
 class ObatController extends Controller
 {
-    // public function register(Request $request){
-    //     $this->validate($request, [
-    //         'name'       => 'required',
-    //         'email'     => 'required',
-    //         'password'   => 'required|min:6',
-            
-    //     ]);
 
-    //         User::register([
-    //         'name'       => $request->name,
-    //         'email'     => $request->email,
-    //         'passowrd'        => $request->password,
-            
-    //     ]);
-    //     return redirect()->route('obat.store');
-    // }
 
     public function create(Request $request){
         $this->validate($request, [
@@ -63,11 +48,11 @@ class ObatController extends Controller
     public function edit(Request $request, $id){
         
         // get post by ID
-        // $obat = obat::findOrFail($id);
+        $obat = obat::findOrFail($id);
         // dd ($obat);
     
         //render view with post
-        return view('edit' );
+        return view('edit', compact('obat') );
         }
 
             /**
@@ -108,9 +93,13 @@ class ObatController extends Controller
 		$obat = Obat::
 		where('item_code',$search)
         ->get();
+        $obat = Obat::
+		where('uom',$search)
+        ->get();
+ 
  
     		// mengirim data pegawai ke view index
-		return view('store', compact('obat'));
+        return view('/store', compact('obat', 'search'));
  
 	}
 
