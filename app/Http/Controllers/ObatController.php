@@ -89,16 +89,14 @@ class ObatController extends Controller
 		// menangkap data pencarian
 		$search = $request->search;
  
-    		// mengambil data dari table pegawai sesuai pencarian data
+    		// mengambil data dari table sesuai pencarian data
 		$obat = Obat::
 		where('item_code',$search)
         ->get();
         $obat = Obat::
 		where('uom',$search)
         ->get();
- 
- 
-    		// mengirim data pegawai ke view index
+
         return view('/store', compact('obat', 'search'));
  
 	}

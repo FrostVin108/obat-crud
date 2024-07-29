@@ -8,13 +8,13 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <p style="font-size: 20px">pilih sesuai keperluan</p>
+        <p style="font-size: 25px">pilih sesuai keperluan</p>
 
-        <form action="{{route('search') }}" method="GET">
-            <input type="text"  style="font-size: 18px"name="search" placeholder="Cari Kode Item" value="{{ old('search') }}">
-            <input type="submit" style="border-radius: 0px" style="font-size: 14px" type="button" class="btn btn-info" value="Search">
-            <a href="/"><button  type="button" style="border-radius: 0px" style="font-size: 14px" class="btn btn-info">balik</button></a>
-        </form>
+        <form class="form-inline" action="{{route('search') }}" method="GET">
+            <input class="col-md-3" type="text"  style="font-size: 18px"name="search" placeholder="Cari Kode Item Atau UOM" value="{{ old('search') }}" class="form-control mr-sm-2">
+            <input type="submit" style="border-radius: 3px" style="font-size: 14px" type="button" class="btn btn-outline-info my-3 my-sm-0" value="Search">
+            <a href="/"><button  type="button" style="border-radius: 3px" style="font-size: 10px" class="btn btn-outline-info my-2 my-sm-0">balik</button></a>
+        </form><br>
                 
                 <a href="create"><button type="button" class="btn btn-success" style="font-size:18px">Masukin Obat</button></a>
                 {{-- <a href="store"><button type="button" class="btn btn-secondary" style="font-size:15px">Check Obat</button></a> --}}
