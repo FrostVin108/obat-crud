@@ -52,29 +52,35 @@ class HomeController extends Controller
 
     public function login(Request $request)
     {
-        $this->validate($request, ['password']);
-        $user = $request->user();
-        if ($user->password != $request->password) {
-            return redirect()->back()->with("error","invalid email or password");
-        }
+        // menangkap data pencarian
+        $login = $request->login;
         
+        // mengambil data dari table sesuai pencarian data
+        $user = User::
+        where('email',$login)
+        ->get();
+        $user = User::
+        where('password',$login)
+        ->get();
+
+        return view('/loginOB', compact('user', 'login'));
         
     }
 
-    public function authenticate(Request $request)
-    {
-        $credentials = $request->validate([ 
-            'email' => 'required|email', 
-            'password' => 'required', 
-        ]); 
-        if (User::attempt($credentials)) { 
-            $request->session()->regenerate(); 
-            return redirect()->intended('/'); 
-        } 
-        return back()->withErrors([ 
-            'email' => 'Email and password combination does not match.', 
-        ]); 
-    }
+    // public function authenticate(Request $request)
+    // {
+    //     $credentials = $request->validate([ 
+    //         'email' => 'required|email', 
+    //         'password' => 'required', 
+    //     ]); 
+    //     if (User::attempt($credentials)) { 
+    //         $request->session()->regenerate(); 
+    //         return redirect()->intended('/'); 
+    //     } 
+    //     return back()->withErrors([ 
+    //         'email' => 'Email and password combination does not match.', 
+    //     ]); 
+    // }
 
     // public function authenticate(Request $request) 
     // { 

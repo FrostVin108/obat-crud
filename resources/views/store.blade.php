@@ -11,7 +11,7 @@
         <p style="font-size: 25px">pilih sesuai keperluan</p>
 
         <form class="form-inline" action="{{route('search') }}" method="GET">
-            <input class="col-md-3" type="text"  style="font-size: 18px"name="search" placeholder="Cari Kode Item Atau UOM" value="{{ old('search') }}" class="form-control mr-sm-2">
+            <input class="col-md-3" type="search"  style="font-size: 18px"name="search" placeholder="Cari Kode Item Atau UOM" value="{{ old('search') }}" class="form-control mr-sm-2">
             <input type="submit" style="border-radius: 3px" style="font-size: 14px" type="button" class="btn btn-outline-info my-3 my-sm-0" value="Search">
             <a href="/"><button  type="button" style="border-radius: 3px" style="font-size: 10px" class="btn btn-outline-info my-2 my-sm-0">balik</button></a>
         </form><br>
@@ -24,7 +24,7 @@
 <br>
 <div class="card">
     <div class="card-body">
-        <table class="table table-hover ">
+        <table class="table table-hover " id="tbl_list">
             <thead>
               <tr>
                 <th scope="col">No</th>
@@ -68,4 +68,37 @@
     </div>
 </div>
 
+{{-- @section('js')
+<script type="text/javascript">
+   $(function () {
+        let tableurl = "{{ route('obat.dtable') }}";
+        var table = $('#tbl_list').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: tableurl,
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'uom',
+                    name: 'uom'
+                }
+            ],
+            paging: true,
+            responsive: true,
+            lengthChange: true,
+            searching: true,
+            autoWidth: false,
+            orderCellsTop: true,
+            searchDelay: 500,
+        });
+        $('#data_range').change(function(event) {
+            $('#tbl_list').DataTable().ajax.reload(null, false);
+        });
+    });
+</script>
+@endsection --}}
 @stop

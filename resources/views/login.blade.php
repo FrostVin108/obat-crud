@@ -44,7 +44,7 @@
                 
 
                 <div class="card-body ">
-                    <form method="POST" action="{{ route('obat.login') }}" class="gap-form m4">
+                    <form method="GET" action="{{ route('login') }}" class="gap-form m4">
                         @csrf
                     
                         <div class=" offset-md-1">

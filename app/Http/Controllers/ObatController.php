@@ -6,6 +6,7 @@ use App\Models\Obat;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class ObatController extends Controller
 {
@@ -16,7 +17,7 @@ class ObatController extends Controller
             'item_code'       => 'required|min:14',
             'deskription'     => 'required',
             'uom'             => 'required',
-            'stock_on_hand'   => 'required|min:1',
+            'stock_on_hand'   => 'required|numeric|min:1',
 
         ]);
 
@@ -113,22 +114,31 @@ class ObatController extends Controller
     // {  
     //     return view('auth.register');
     // }
-    public function verify()
-    {  
-        return view('auth.verify');
-    }
-
-    public function confirm()
-    {  
-        return view('auth.passwords.confirm');
-    }
-    public function email()
-    {  
-        return view('auth.passwords.email');
-    }
-    public function reset()
-    {  
-        return view('auth.passwords.reset');
+    
+    public function dtable(Request $request)
+    {
+        // dd($request);'DD
+            $products = Obat::all();
+            return DataTables::of($products)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    return "<a href='javascript:void(0)' class='btn btn-success' onclick='show_modal_edit(`modal_user`, $row->id)'>Edit</a> <a href='javascript:void(0)' class='btn btn-danger' onclick='show_modal_delete($row->id)'>delete</a>";
+                })
+                // ->filter(function($product){
+                //     if (request()->has("data_range") && request()->input('data_range') !== '0') {
+                //         $rangeInput = request()->input('data_range');
+                //         $range = explode(' - ', $rangeInput);
+                //         $min = (int) $range[0];
+                //         $max = (int) $range[1];
+                //         if ($max === 0) {
+                //             // If $max is 0, include all prices from $min onwards
+                //             $product->where('price', '>=', $min);
+                //         } else {
+                //         $product->whereBetween('price', [$min, $max]);
+                //         }
+                //     }
+                // },true)
+                ->toJson();
     }
 
         

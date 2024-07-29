@@ -21,8 +21,15 @@
         </div>
         <br>
 
-    <label for="exampleInputEmail1"> Masukin UOM Item</label>
-    <input type="text" class="form-control " placeholder="Masukan UOM" name="uom">
+    <label for="exampleInputEmail1"> Masukin UOM Item</label><br>
+    {{-- <input type="text" class="form-control " placeholder="Masukan UOM" name="uom"> --}}
+    <select name="uom" class="form-control">
+        <option value="bottle">Bottle</option>
+        <option value="strip">Strip</option>
+        <option value="pill">Pill</option>
+        <option value="tablets">Tablets</option>
+        {{-- <option value="animal">Animal</option> --}}
+      </select>
         @error('uom')
         <div class="alert alert-danger mt-2">
                 {{ $message }}

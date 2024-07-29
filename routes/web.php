@@ -55,17 +55,11 @@ Route::get('/register', function(){
     return view('register');
 })->name('obat.register');
 
-Route::post('/login', [HomeController::class,'authenticate'])->name('obat.login');
+Route::get('login', [HomeController::class,'login'])->name('login');
 
-Route::get('/login', function(){
+Route::get('/loginOB', function(){
     return view('login');
 })->name('obat.login');
 
-// Route::get('/verify', [ObatController::class,'verify']);
-
-// Route::get('/confirm', [ObatController::class,'confirm']);
-
-// Route::get('/email', [ObatController::class,'email']);
-
-// Route::get('/reset', [ObatController::class,'reset']);
+Route::get('dtable',[ObatController::class, 'dtable'] )->name('obat.dtable');
 
