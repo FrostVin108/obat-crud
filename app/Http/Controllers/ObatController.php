@@ -31,13 +31,13 @@ class ObatController extends Controller
         return redirect()->route('obat.store');
     }
 
-    public function tes()
-    {
-        $obat = Obat::first();
-        // bersifat array
+    // public function tes()
+    // {
+    //     $obat = Obat::first();
+    //     // bersifat array
        
-        return view('tes1', compact('obat'));
-    }
+    //     return view('tes1', compact('obat'));
+    // }
     
     public function destroy($id){
         $obat = Obat::findOrFail($id);
@@ -49,7 +49,7 @@ class ObatController extends Controller
     public function edit(Request $request, $id){
         
         // get post by ID
-        $obat = obat::findOrFail($id);
+        $obat = Obat::findOrFail($id);
         // dd ($obat);
     
         //render view with post
@@ -85,13 +85,6 @@ class ObatController extends Controller
         return redirect()->route('obat.store');
     }
 
-                /**
-     * update
-     *
-     * @param  mixed $request
-     * @param  mixed $id
-     * @return RedirectResponse
-     */
 
     public function updatestock(Request $request, $id):RedirectResponse{
     
@@ -126,10 +119,6 @@ class ObatController extends Controller
         return view('/store', compact('obat', 'search'));
  
 	}
-
- 
-
-
     
     public function login()
     {  
@@ -166,5 +155,13 @@ class ObatController extends Controller
                 ->toJson();
     }
 
-        
+    public function loglte()
+    {
+        return view('auth.login');
+    }
+
+    public function reglte()
+    {
+        return view('auth.register');
+    }
 }

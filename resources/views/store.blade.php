@@ -48,8 +48,12 @@
                         <form action="{{ route('updatestock', $ob->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('put')
-                            <input type="number"  placeholder="Masukan Stock Obat Di Tangan" value="{{ old('stock_on_hand', $ob->stock_on_hand) }}" name="stock_on_hand">
-                            <button type="submit" class="btn btn-md btn-success">Isi</button>
+                            <div >
+                                <input  type="number"  placeholder="Masukan Stock Obat Di Tangan" value="{{ old('stock_on_hand', $ob->stock_on_hand) }}" name="stock_on_hand">
+                                <button type="submit" class="btn btn-md btn-success">Isi</button>
+                                <button type="reset" class="btn btn-md btn-warning">Cancel</button>
+                            </div>
+                            
                         </form>
                     </td>
                       <td>

@@ -21,14 +21,13 @@
 
                     
                         <label for="exampleInputEmail1">UOM Obat</label>
-                        {{-- <input type="text" class="form-control placeholder="Masukan Jumlah Stock Obat" value="{{ old('uom', $obat->uom) }}" name="uom"> --}}
-                        <select name="uom" class="form-control">
+                        <input type="text" class="form-control" placeholder="Masukan Jumlah Stock Obat" value="{{ old('uom', $obat->uom) }}" name="uom">
+                        {{-- <select value="{{ old('uom', $obat->uom) }}" name="uom" class="form-control" >
                             <option value="bottle">Bottle</option>
                             <option value="strip">Strip</option>
                             <option value="pill">Pill</option>
                             <option value="tablets">Tablets</option>
-                            {{-- <option value="animal">Animal</option> --}}
-                          </select><br>
+                          </select><br> --}}
 
                         <label for="exampleInputEmail1">Item Code</label><br>
                         <input type="number"  placeholder="Masukan Kode Obat" value="{{ old('obat', $obat->item_code) }}" name="item_code"><br>

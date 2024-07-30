@@ -61,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div class=" offset-md-1">
+                        <div class="offset-md-1">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-10">

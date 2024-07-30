@@ -45,23 +45,28 @@ Route::get('/edit/{id}', [ObatController::class, 'edit'])->name('obat.edit');
 
 Route::put('/update/{id}', [ObatController::class, 'update'])->name('obat.update');
 
-Route::put('/update/{id}', [ObatController::class, 'updatestock'])->name('updatestock');
+Route::put('/updatestock/{id}', [ObatController::class, 'updatestock'])->name('updatestock');
 
 Route::get('search', [ObatController::class,'search'])->name('search');
 
 // \Illuminate\Support\Facades\Auth::routes();
 
-route::post('/register', [HomeController::class, 'register']);
+// route::post('/register', [HomeController::class, 'register']);
 
-Route::get('/register', function(){
-    return view('register');
-})->name('obat.register');
+// Route::get('/register', function(){
+//     return view('register');
+// })->name('obat.register');
 
-Route::get('login', [HomeController::class,'login'])->name('login');
+// Route::get('login', [HomeController::class,'login'])->name('login');
 
-Route::get('/loginOB', function(){
-    return view('login');
-})->name('obat.login');
+// Route::get('/loginOB', function(){
+//     return view('login');
+// })->name('obat.login');
 
 Route::get('dtable',[ObatController::class, 'dtable'] )->name('obat.dtable');
 
+Route::get('/login',[ObatController::class,'loglte'] )->name('obat.loginlte');
+
+Route::get('/register',[ObatController::class,'reglte'])->name('obat.registerlte');
+
+// route::get('/tes',[ObatController::class,'tes'] )->name('obat.update');
